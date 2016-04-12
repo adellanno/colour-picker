@@ -13,61 +13,107 @@ $(document).ready(function() {
   $(".colour-1-hex").text(rgbToHex("rgba(" + data[0].baseColour.toString() + ")"));
   $(".colour-1-sample").css('color', rgbToHex("rgba(" + data[0].baseColour.toString() + ")"));
   $(".colour1-tint-1").text(rgbToHex("rgba(" + createTint(data[0].tints[0], data[0].baseColour) + ")"));
+  $(".c1-rgba1").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour1-tint-1").css('color', rgbToHex("rgba(" + createTint(data[0].tints[0], data[0].baseColour) + ")"));
   $(".colour1-tint-2").text(rgbToHex("rgba(" + createTint(data[0].tints[1], data[0].baseColour) + ")"));
+  $(".c1-rgba2").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour1-tint-2").css('color', rgbToHex("rgba(" + createTint(data[0].tints[1], data[0].baseColour) + ")"));
   $(".colour1-tint-3").text(rgbToHex("rgba(" + createTint(data[0].tints[2], data[0].baseColour) + ")"));
+  $(".c1-rgba3").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour1-tint-3").css('color', rgbToHex("rgba(" + createTint(data[0].tints[2], data[0].baseColour) + ")"));
   $(".colour1-tint-4").text(rgbToHex("rgba(" + createTint(data[0].tints[3], data[0].baseColour) + ")"));
+  $(".c1-rgba4").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour1-tint-4").css('color', rgbToHex("rgba(" + createTint(data[0].tints[3], data[0].baseColour) + ")"));
+  $(".colour1-tint-5").text(rgbToHex("rgba(" + createTint(data[0].tints[4], data[0].baseColour) + ")"));
+  $(".c1-rgba5").text(createTint(data[0].tints[1], data[0].baseColour));
+  $(".colour1-tint-5").css('color', rgbToHex("rgba(" + createTint(data[0].tints[4], data[0].baseColour) + ")"));
 
   $(".colour-2-name").text(data[1].name);
   $(".colour-2-hex").text(rgbToHex("rgba(" + data[1].baseColour.toString() + ")"));
   $(".colour-2-sample").css('color', rgbToHex("rgba(" + data[1].baseColour.toString() + ")"));
   $(".colour2-tint-1").text(rgbToHex("rgba(" + createTint(data[1].tints[0], data[1].baseColour) + ")"));
+  $(".c2-rgba1").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour2-tint-1").css('color', rgbToHex("rgba(" + createTint(data[1].tints[0], data[1].baseColour) + ")"));
   $(".colour2-tint-2").text(rgbToHex("rgba(" + createTint(data[1].tints[1], data[1].baseColour) + ")"));
+  $(".c2-rgba2").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour2-tint-2").css('color', rgbToHex("rgba(" + createTint(data[1].tints[1], data[1].baseColour) + ")"));
   $(".colour2-tint-3").text(rgbToHex("rgba(" + createTint(data[1].tints[2], data[1].baseColour) + ")"));
+  $(".c2-rgba3").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour2-tint-3").css('color', rgbToHex("rgba(" + createTint(data[1].tints[2], data[1].baseColour) + ")"));
   $(".colour2-tint-4").text(rgbToHex("rgba(" + createTint(data[1].tints[3], data[1].baseColour) + ")"));
-  $(".colour2-tint-4").css('color', rgbToHex("rgba(" + createTint(data[1].tints[2], data[1].baseColour) + ")"));
+  $(".c2-rgba4").text(createTint(data[0].tints[1], data[0].baseColour));
+  $(".colour2-tint-4").css('color', rgbToHex("rgba(" + createTint(data[1].tints[3], data[1].baseColour) + ")"));
+  $(".colour2-tint-5").text(rgbToHex("rgba(" + createTint(data[1].tints[4], data[1].baseColour) + ")"));
+  $(".c2-rgba5").text(createTint(data[0].tints[1], data[0].baseColour));
+  $(".colour2-tint-5").css('color', rgbToHex("rgba(" + createTint(data[1].tints[4], data[1].baseColour) + ")"));
 
   $(".colour-3-name").text(data[2].name);
   $(".colour-3-hex").text(rgbToHex("rgba(" + data[2].baseColour.toString() + ")"));
   $(".colour-3-sample").css('color', rgbToHex("rgba(" + data[2].baseColour.toString() + ")"));
   $(".colour3-tint-1").text(rgbToHex("rgba(" + createTint(data[2].tints[0], data[2].baseColour) + ")"));
+  $(".c3-rgba1").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour3-tint-1").css('color', rgbToHex("rgba(" + createTint(data[2].tints[0], data[2].baseColour) + ")"));
   $(".colour3-tint-2").text(rgbToHex("rgba(" + createTint(data[2].tints[1], data[2].baseColour) + ")"));
+  $(".c3-rgba2").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour3-tint-2").css('color', rgbToHex("rgba(" + createTint(data[2].tints[1], data[2].baseColour) + ")"));
   $(".colour3-tint-3").text(rgbToHex("rgba(" + createTint(data[2].tints[2], data[2].baseColour) + ")"));
+  $(".c3-rgba3").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour3-tint-3").css('color', rgbToHex("rgba(" + createTint(data[2].tints[2], data[2].baseColour) + ")"));
   $(".colour3-tint-4").text(rgbToHex("rgba(" + createTint(data[2].tints[3], data[2].baseColour) + ")"));
+  $(".c3-rgba4").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour3-tint-4").css('color', rgbToHex("rgba(" + createTint(data[2].tints[3], data[2].baseColour) + ")"));
+  $(".colour3-tint-5").text(rgbToHex("rgba(" + createTint(data[2].tints[4], data[2].baseColour) + ")"));
+  $(".c3-rgba5").text(createTint(data[0].tints[1], data[0].baseColour));
+  $(".colour3-tint-5").css('color', rgbToHex("rgba(" + createTint(data[2].tints[4], data[2].baseColour) + ")"));
 
   $(".colour-4-name").text(data[3].name);
   $(".colour-4-hex").text(rgbToHex("rgba(" + data[2].baseColour.toString() + ")"));
   $(".colour-4-sample").css('color', rgbToHex("rgba(" + data[3].baseColour.toString() + ")"));
   $(".colour4-tint-1").text(rgbToHex("rgba(" + createTint(data[3].tints[0], data[3].baseColour) + ")"));
+  $(".c4-rgba1").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour4-tint-1").css('color', rgbToHex("rgba(" + createTint(data[3].tints[0], data[3].baseColour) + ")"));
   $(".colour4-tint-2").text(rgbToHex("rgba(" + createTint(data[3].tints[1], data[2].baseColour) + ")"));
+  $(".c4-rgba2").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour4-tint-2").css('color', rgbToHex("rgba(" + createTint(data[3].tints[1], data[3].baseColour) + ")"));
   $(".colour4-tint-3").text(rgbToHex("rgba(" + createTint(data[3].tints[2], data[3].baseColour) + ")"));
+  $(".c4-rgba3").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour4-tint-3").css('color', rgbToHex("rgba(" + createTint(data[2].tints[2], data[3].baseColour) + ")"));
   $(".colour4-tint-4").text(rgbToHex("rgba(" + createTint(data[3].tints[3], data[3].baseColour) + ")"));
+  $(".c4-rgba4").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour4-tint-4").css('color', rgbToHex("rgba(" + createTint(data[3].tints[3], data[3].baseColour) + ")"));
+  $(".colour4-tint-5").text(rgbToHex("rgba(" + createTint(data[3].tints[4], data[3].baseColour) + ")"));
+  $(".c4-rgba5").text(createTint(data[0].tints[1], data[0].baseColour));
+  $(".colour4-tint-5").css('color', rgbToHex("rgba(" + createTint(data[3].tints[4], data[3].baseColour) + ")"));
 
   $(".colour-5-name").text(data[4].name);
   $(".colour-5-hex").text(rgbToHex("rgba(" + data[4].baseColour.toString() + ")"));
   $(".colour-5-sample").css('color', rgbToHex("rgba(" + data[4].baseColour.toString() + ")"));
   $(".colour5-tint-1").text(rgbToHex("rgba(" + createTint(data[4].tints[0], data[4].baseColour) + ")"));
+  $(".c5-rgba1").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour5-tint-1").css('color', rgbToHex("rgba(" + createTint(data[4].tints[0], data[4].baseColour) + ")"));
   $(".colour5-tint-2").text(rgbToHex("rgba(" + createTint(data[4].tints[1], data[4].baseColour) + ")"));
+  $(".c5-rgba2").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour5-tint-2").css('color', rgbToHex("rgba(" + createTint(data[4].tints[1], data[4].baseColour) + ")"));
   $(".colour5-tint-3").text(rgbToHex("rgba(" + createTint(data[4].tints[2], data[4].baseColour) + ")"));
+  $(".c5-rgba3").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour5-tint-3").css('color', rgbToHex("rgba(" + createTint(data[4].tints[2], data[4].baseColour) + ")"));
   $(".colour5-tint-4").text(rgbToHex("rgba(" + createTint(data[4].tints[3], data[4].baseColour) + ")"));
+  $(".c5-rgba4").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour5-tint-4").css('color', rgbToHex("rgba(" + createTint(data[4].tints[3], data[4].baseColour) + ")"));
+  $(".colour5-tint-5").text(rgbToHex("rgba(" + createTint(data[4].tints[4], data[4].baseColour) + ")"));
+  $(".c5-rgba5").text(createTint(data[0].tints[1], data[0].baseColour));
+  $(".colour5-tint-5").css('color', rgbToHex("rgba(" + createTint(data[4].tints[4], data[4].baseColour) + ")"));
+
+  $(function() {
+    $(".increaseAlpha").click(function() {
+      var alpha  = $(this).siblings('span.alpha');
+      alpha.text((Math.min(1, Number(alpha.text()) + 0.1)).toFixed(1))
+    });
+    $(".decreaseAlpha").click(function() {
+      var alpha = $(this).siblings('span.alpha');
+      alpha.text((Math.max(0, Number(alpha.text()) - 0.1)).toFixed(1))
+    });
+  });
 
 });
 
