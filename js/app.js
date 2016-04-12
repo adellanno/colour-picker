@@ -67,7 +67,7 @@ $(document).ready(function() {
   $(".colour3-tint-5").css('color', rgbToHex("rgba(" + createTint(data[2].tints[4], data[2].baseColour) + ")"));
 
   $(".colour-4-name").text(data[3].name);
-  $(".colour-4-hex").text(rgbToHex("rgba(" + data[2].baseColour.toString() + ")"));
+  $(".colour-4-hex").text(rgbToHex("rgba(" + data[3].baseColour.toString() + ")"));
   $(".colour-4-sample").css('color', rgbToHex("rgba(" + data[3].baseColour.toString() + ")"));
   $(".colour4-tint-1").text(rgbToHex("rgba(" + createTint(data[3].tints[0], data[3].baseColour) + ")"));
   $(".c4-rgba1").text(createTint(data[0].tints[1], data[0].baseColour));
@@ -104,6 +104,37 @@ $(document).ready(function() {
   $(".c5-rgba5").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour5-tint-5").css('color', rgbToHex("rgba(" + createTint(data[4].tints[4], data[4].baseColour) + ")"));
 
+  $(".new-colour").submit(function() {
+    var nameInput = $('.name-input').val();
+    var nameValue = $(this).siblings('span.new-colour-name');
+    nameValue.text(nameInput);
+    return false;
+  })
+
+  $(".enter-new-colour").submit(function() {
+    var newColourValue = $('.new-colour-input').val();
+    var hexValue = $(this).siblings('span');
+    hexValue.text(rgbToHex("rgba(" + newColourValue.toString() + ")"));
+    $(".new-colour-sample").css('color', rgbToHex("rgba(" + newColourValue.toString() + ")"));
+    $(".new-colour-tint-1").text(rgbToHex("rgba(" + createTint(defaultTints.tints[0], newColourValue) + ")"));
+    $(".new-colour-rgba1").text(createTint(defaultTints.tints[0], newColourValue));
+    $(".new-colour-tint-1").css('color', rgbToHex("rgba(" + createTint(defaultTints.tints[0], newColourValue) + ")"));
+    $(".new-colour-tint-2").text(rgbToHex("rgba(" + createTint(defaultTints.tints[1], newColourValue) + ")"));
+    $(".new-colour-rgba2").text(createTint(defaultTints.tints[1], newColourValue));
+    $(".new-colour-tint-2").css('color', rgbToHex("rgba(" + createTint(defaultTints.tints[1], newColourValue) + ")"));
+    hexValue = '';
+    return false;
+  });
+
+  $(".edit-form").submit(function() {
+    var textValue = $('.text-input').val();
+    var hexValue = $(this).siblings('span');
+    hexValue.text(rgbToHex("rgba(" + textValue.toString() + ")"));
+    textValue = '';
+    hexValue = '';
+    return false;
+  });
+
   $(function() {
     $(".increaseAlpha").click(function() {
       var alpha  = $(this).siblings('span.alpha');
@@ -139,3 +170,8 @@ function createTint(tint, baseColour) {
   }
   return newTint
 }
+
+var defaultTints =	{"tints": [
+		[10, 12, 150],
+		[10, 50, 120]
+]};
