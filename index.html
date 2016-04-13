@@ -5,8 +5,42 @@
     <title>Colour Picker</title>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="js/app.js"></script>
+    <script type="text/javascript" src="data.json"></script>
   </head>
   <body>
+
+    <!-- Export JSON -->
+
+    <h2>Once you have created a new colour a download link will appear here so you can save it<br/>
+       (please ensure it is saved to root directory and named data.json): <span id="container"></span></h2>
+
+    <hr>
+
+    <!-- Imported Colours -->
+
+    <h2>If you have imported any saved colours they will appear here:</h2>
+
+    <div>
+      <h2>Name:
+        <span class="imported-colour-name"></span>
+      </h2>
+      <h3>Hex:
+        <span class="imported-colour-hex"></span>
+      </h3>
+      <h3 class="imported-colour-sample">Base Colour Sample</h3>
+      <h3>Tint 1: <span class="exported-tint-1"></span></h3>
+      <h4>RGBA Output: (<span class="exported-rgba-1"></span><span class="alpha">0.0</span>)
+        <input class="increaseAlpha" type="button" name="increase" value="+">
+        <input class="decreaseAlpha" type="button" name="decrease" value="-">
+      </h4>
+      <h3>Tint 2: <span class="exported-tint-2"></span></h3>
+      <h4>RGBA Output: (<span class="exported-rgba-2"></span><span class="alpha">0.0</span>)
+        <input class="increaseAlpha" type="button" name="increase" value="+">
+        <input class="decreaseAlpha" type="button" name="decrease" value="-">
+      </h4>
+    </div>
+
+    <hr>
 
     <!-- Add New Colour -->
 
@@ -16,7 +50,6 @@
         <span class="new-colour-name">Please Enter a Name Below</span>
         <form class="new-colour">
           <input class="name-input" type="text" placeholder="Type in the name of your colour" />
-          <input type="submit" value="Submit">
         </form>
       </h2>
       <h3>Hex:
@@ -46,6 +79,8 @@
         <input class="decreaseAlpha" type="button" name="decrease" value="-">
       </h4>
     </div>
+
+    <hr>
 
     <!-- Colour 1 -->
 

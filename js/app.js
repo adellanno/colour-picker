@@ -104,36 +104,54 @@ $(document).ready(function() {
   $(".c5-rgba5").text(createTint(data[0].tints[1], data[0].baseColour));
   $(".colour5-tint-5").css('color', rgbToHex("rgba(" + createTint(data[4].tints[4], data[4].baseColour) + ")"));
 
-  $(".new-colour").submit(function() {
-    var nameInput = $('.name-input').val();
-    var nameValue = $(this).siblings('span.new-colour-name');
-    nameValue.text(nameInput);
-    return false;
-  })
+  // Saved Colours
+
+  var savedData;
+
+  $.getJSON("data.json", function(json) {
+    $(".imported-colour-name").text(json[0].name);
+    $(".imported-colour-hex").text(rgbToHex("rgba(" + json[0].baseColour.toString() + ")"));
+    $(".imported-colour-sample").css('color', rgbToHex("rgba(" + json[0].baseColour.toString() + ")"));
+    $(".exported-tint-1").text(rgbToHex("rgba(" + createTint(json[0].tints[0], json[0].baseColour) + ")"));
+    $(".exported-rgba-1").text(createTint(json[0].tints[1], json[0].baseColour));
+    $(".exported-tint-1").css('color', rgbToHex("rgba(" + createTint(json[0].tints[0], json[0].baseColour) + ")"));
+    $(".exported-tint-2").text(rgbToHex("rgba(" + createTint(json[0].tints[1], json[0].baseColour) + ")"));
+    $(".exported-rgba-2").text(createTint(json[0].tints[1], json[0].baseColour));
+    $(".exported-tint-2").css('color', rgbToHex("rgba(" + createTint(json[0].tints[1], json[0].baseColour) + ")"));
+  });
+
+  // Create new Colours
 
   $(".enter-new-colour").submit(function() {
+    var nameInput = $('.name-input').val();
+    $(".new-colour-name").text(nameInput);
     var newColourValue = $('.new-colour-input').val();
     var hexValue = $(this).siblings('span');
-    hexValue.text(rgbToHex("rgba(" + newColourValue.toString() + ")"));
-    $(".new-colour-sample").css('color', rgbToHex("rgba(" + newColourValue.toString() + ")"));
-    $(".new-colour-tint-1").text(rgbToHex("rgba(" + createTint(defaultTints.tints[0], newColourValue) + ")"));
-    $(".new-colour-rgba1").text(createTint(defaultTints.tints[0], newColourValue));
-    $(".new-colour-tint-1").css('color', rgbToHex("rgba(" + createTint(defaultTints.tints[0], newColourValue) + ")"));
-    $(".new-colour-tint-2").text(rgbToHex("rgba(" + createTint(defaultTints.tints[1], newColourValue) + ")"));
-    $(".new-colour-rgba2").text(createTint(defaultTints.tints[1], newColourValue));
-    $(".new-colour-tint-2").css('color', rgbToHex("rgba(" + createTint(defaultTints.tints[1], newColourValue) + ")"));
-    hexValue = '';
+      hexValue.text(rgbToHex("rgba(" + newColourValue.toString() + ")"));
+      $(".new-colour-sample").css('color', rgbToHex("rgba(" + newColourValue.toString() + ")"));
+      $(".new-colour-tint-1").text(rgbToHex("rgba(" + createTint(defaultTints.tints[0], newColourValue) + ")"));
+      $(".new-colour-rgba1").text(createTint(defaultTints.tints[0], newColourValue));
+      $(".new-colour-tint-1").css('color', rgbToHex("rgba(" + createTint(defaultTints.tints[0], newColourValue) + ")"));
+      $(".new-colour-tint-2").text(rgbToHex("rgba(" + createTint(defaultTints.tints[1], newColourValue) + ")"));
+      $(".new-colour-rgba2").text(createTint(defaultTints.tints[1], newColourValue));
+      $(".new-colour-tint-2").css('color', rgbToHex("rgba(" + createTint(defaultTints.tints[1], newColourValue) + ")"));
+      hexValue = '';
+      createJson(nameInput, newColourValue);
     return false;
   });
+
+  // Edit colours
 
   $(".edit-form").submit(function() {
     var textValue = $('.text-input').val();
     var hexValue = $(this).siblings('span');
-    hexValue.text(rgbToHex("rgba(" + textValue.toString() + ")"));
-    textValue = '';
-    hexValue = '';
-    return false;
+      hexValue.text(rgbToHex("rgba(" + textValue.toString() + ")"));
+      textValue = '';
+      hexValue = '';
+      return false;
   });
+
+  // Increase/Decrease Alpha
 
   $(function() {
     $(".increaseAlpha").click(function() {
@@ -148,6 +166,35 @@ $(document).ready(function() {
 
 });
 
+// Create Json
+
+function createJson(nameInput, newColourValue) {
+  var jsonText = [{"name": nameInput,
+                  "baseColour": newColourValue.split(', ').map(Number),
+                  "tints": [
+                        		[10, 12, 150],
+                        		[10, 50, 120]
+                  ]
+  }];
+  exportJson(jsonText);
+};
+
+// Export Json
+
+function exportJson(jsonText) {
+  var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonText));
+
+  var a = document.createElement('a');
+  a.href = 'data:' + data;
+  a.download = '/data.json';
+  a.innerHTML = 'download JSON';
+
+  var container = document.getElementById('container');
+  container.appendChild(a);
+}
+
+// RGB to hex
+
 function rgbToHex(rgb){
  rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
  return (rgb && rgb.length === 4) ? "#" +
@@ -155,6 +202,8 @@ function rgbToHex(rgb){
   ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
   ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
 }
+
+// Create Tints
 
 function createTint(tint, baseColour) {
   newTint = ''
@@ -170,6 +219,8 @@ function createTint(tint, baseColour) {
   }
   return newTint
 }
+
+// mock tints
 
 var defaultTints =	{"tints": [
 		[10, 12, 150],
